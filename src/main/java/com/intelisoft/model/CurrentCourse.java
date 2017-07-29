@@ -3,12 +3,20 @@ package com.intelisoft.model;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "current_courses")
 public class CurrentCourse extends Model{
 
 	private static final long serialVersionUID = -8179107624184931157L;
 
+	@Column(name = "start_date", nullable = true)
 	private Date startDate;
 	
+	@Column(name = "end_date", nullable = true)
 	private Date endDate;
 	
 	private Course course;

@@ -3,16 +3,25 @@ package com.intelisoft.model;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import com.intelisoft.model.enums.NotifficationType;
 
+@Entity
+@Table(name = "notiffications")
 public class Notiffication extends Model{
 
 	private static final long serialVersionUID = 5734793146922815304L;
 
+	@Column(name = "notice_datetime", nullable = false)
 	private Date noticeDateTime;
 	
+	@Column(name = "message", nullable = false)
 	private String message;
 	
+	@Column(name = "type", nullable = false)
 	private NotifficationType type;
 	
 	private List<User> users;

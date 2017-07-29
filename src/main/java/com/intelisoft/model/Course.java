@@ -2,14 +2,23 @@ package com.intelisoft.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "courses")
 public class Course extends Model{
 
 	private static final long serialVersionUID = -3032038204901394998L;
 
+	@Column(name = "name", nullable = false)
 	private String name;
 	
+	@Column(name = "cost", nullable = false)
 	private Double cost;
 	
+	@Column(name = "duration_hours", nullable = false)
 	private Float durationHours;
 	
 	private List<Lesson> lessons;

@@ -2,28 +2,37 @@ package com.intelisoft.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import com.intelisoft.model.enums.NotifficationStatus;
+
+@Entity
+@Table(name = "statuses")
 public class Status extends Model{
 
 	private static final long serialVersionUID = -1644610084060724419L;
 
-	private String name;
+	@Column(name = "status", nullable = false)
+	private NotifficationStatus status;
 	
 	private List<Notiffication> notiffications;
 
 	public Status() {
 	}
 
-	public Status(String name, List<Notiffication> notiffications) {
-		this.name = name;
+	public Status(NotifficationStatus status, List<Notiffication> notiffications) {
+		this.status = status;
 		this.notiffications = notiffications;
 	}
 
-	public String getName() {
-		return name;
+	public NotifficationStatus getStatus() {
+		return status;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setStatus(NotifficationStatus status) {
+		this.status = status;
 	}
 
 	public List<Notiffication> getNotiffications() {
@@ -34,14 +43,13 @@ public class Status extends Model{
 		this.notiffications = notiffications;
 	}
 
-	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Status [id=");
 		builder.append(id);
-		builder.append(", name=");
-		builder.append(name);
+		builder.append(", status=");
+		builder.append(status);
 		builder.append(", notiffications=");
 		builder.append(notiffications);
 		builder.append("]");

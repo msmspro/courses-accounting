@@ -3,24 +3,37 @@ package com.intelisoft.model;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import com.intelisoft.model.enums.UserRole;
 
+@Entity
+@Table(name = "users")
 public class User extends Model{
 
 	private static final long serialVersionUID = -6455789831431114570L;
 
+	@Column(name = "first_name", nullable = false)
 	private String firstName;
 	
+	@Column(name = "last_name", nullable = false)
 	private String lastName;
 	
+	@Column(name = "birth_date", nullable = true)
 	private Date birthDate;
 	
+	@Column(name = "phone_number", nullable = false)
 	private Integer phoneNumber;
 	
+	@Column(name = "address", nullable = true)
 	private String address;
 	
+	@Column(name = "e-mail", nullable = false)
 	private String eMail;
 	
+	@Column(name = "user_role", nullable = false)
 	private UserRole userRole;
 	
 	private List<CurrentCourse> currentCourses;

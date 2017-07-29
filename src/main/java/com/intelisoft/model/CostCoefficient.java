@@ -2,10 +2,17 @@ package com.intelisoft.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "cost_coefficients")
 public class CostCoefficient extends Model{
 
 	private static final long serialVersionUID = 4477981143410388861L;
 	
+	@Column(name = "coefficient", nullable = false)
 	private Float coefficient;
 	
 	private User user;

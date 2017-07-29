@@ -2,12 +2,20 @@ package com.intelisoft.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "lessons")
 public class Lesson extends Model{
 
 	private static final long serialVersionUID = -1666874779326644816L;
 
+	@Column(name = "sequence_number", nullable = false)
 	private Short sequenceNumber;
 	
+	@Column(name = "name", nullable = false)
 	private String name;
 	
 	private List<Topic> topics;

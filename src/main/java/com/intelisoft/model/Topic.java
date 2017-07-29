@@ -1,9 +1,16 @@
 package com.intelisoft.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "topics")
 public class Topic extends Model{
 
 	private static final long serialVersionUID = 5176041501520178093L;
 
+	@Column(name = "name", nullable = false)
 	private String name;
 	
 	private Lesson lesson;

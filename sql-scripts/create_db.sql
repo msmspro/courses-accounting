@@ -6,7 +6,7 @@ use `intelisoft_accounting`;
 
 CREATE TABLE `statuses` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `name` ENUM('complete', 'waiting', 'error') NOT NULL
+    `status` ENUM('complete', 'waiting', 'error') NOT NULL
 );
 
 CREATE TABLE `notiffications` (
@@ -29,7 +29,7 @@ CREATE TABLE `users` (
     `phone_number` INT(20) NOT NULL,
     `address` VARCHAR(40) NULL,
     `e-mail` VARCHAR(50) NOT NULL,
-    `role` ENUM('student', 'teacher') NOT NULL,
+    `user_role` ENUM('student', 'teacher') NOT NULL,
     `id_notiffications` INT UNSIGNED NULL,
     FOREIGN KEY (`id_notiffications`)
         REFERENCES `notiffications` (`id`)

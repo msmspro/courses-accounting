@@ -3,10 +3,17 @@ package com.intelisoft.model;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "complete_lessons")
 public class CompleteLesson extends Model{
 
 	private static final long serialVersionUID = 7516951076959772739L;
 
+	@Column(name = "date", nullable = false)
 	private Date date;
 	
 	private CurrentCourse currentCours;
