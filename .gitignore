@@ -1,0 +1,14 @@
+# Java
+*.class
+*.jar
+target
+bin
+
+# Eclipse
+.classpath
+.project
+.settings
+
+# Maven
+/.m2
+.maven-classpath
