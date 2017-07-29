@@ -1,0 +1,77 @@
+package com.intelisoft.model;
+
+import java.sql.Date;
+import java.util.List;
+
+public class CompleteLesson extends Model{
+
+	private static final long serialVersionUID = 7516951076959772739L;
+
+	private Date date;
+	
+	private CurrentCourse currentCours;
+	
+	private Lesson lesson;
+	
+	private List<User> users;
+
+	public CompleteLesson() {
+	}
+
+	public CompleteLesson(Date date, CurrentCourse currentCours, Lesson lesson, List<User> users) {
+		this.date = date;
+		this.currentCours = currentCours;
+		this.lesson = lesson;
+		this.users = users;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public CurrentCourse getCurrentCours() {
+		return currentCours;
+	}
+
+	public void setCurrentCours(CurrentCourse currentCours) {
+		this.currentCours = currentCours;
+	}
+
+	public Lesson getLesson() {
+		return lesson;
+	}
+
+	public void setLesson(Lesson lesson) {
+		this.lesson = lesson;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("CompleteLesson [id=");
+		builder.append(id);
+		builder.append(", date=");
+		builder.append(date);
+		builder.append(", currentCours=");
+		builder.append(currentCours);
+		builder.append(", lesson=");
+		builder.append(lesson);
+		builder.append(", users=");
+		builder.append(users);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+}

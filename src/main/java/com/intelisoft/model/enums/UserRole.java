@@ -1,4 +1,4 @@
-package com.intelisoft.model;
+package com.intelisoft.model.enums;
 
 public enum UserRole {
 	student, teacher
