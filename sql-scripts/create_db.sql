@@ -6,14 +6,14 @@ use `intelisoft_accounting`;
 
 CREATE TABLE `statuses` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `status` ENUM('complete', 'waiting', 'error') NOT NULL
+    `status` ENUM('COMPLETE', 'WAITING', 'ERROR') NOT NULL
 );
 
 CREATE TABLE `notiffications` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `notice_datetime` DATETIME NOT NULL,
     `message` TEXT NOT NULL,
-    `type` ENUM('e_mail', 'operator') NOT NULL,
+    `type` ENUM('E_MAIL', 'OPERATOR') NOT NULL,
     `id_statuses` INT UNSIGNED NOT NULL,
     FOREIGN KEY (`id_statuses`)
         REFERENCES `statuses` (`id`)
@@ -29,7 +29,7 @@ CREATE TABLE `users` (
     `phone_number` INT(20) NOT NULL,
     `address` VARCHAR(40) NULL,
     `e-mail` VARCHAR(50) NOT NULL,
-    `user_role` ENUM('student', 'teacher') NOT NULL,
+    `user_role` ENUM('STUDENT', 'TEACHER') NOT NULL,
     `id_notiffications` INT UNSIGNED NULL,
     FOREIGN KEY (`id_notiffications`)
         REFERENCES `notiffications` (`id`)

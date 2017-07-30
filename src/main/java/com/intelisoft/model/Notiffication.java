@@ -1,10 +1,14 @@
 package com.intelisoft.model;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.intelisoft.model.enums.NotifficationType;
@@ -24,8 +28,11 @@ public class Notiffication extends Model{
 	@Column(name = "type", nullable = false)
 	private NotifficationType type;
 	
-	private List<User> users;
+	@OneToMany(mappedBy = "notiffication")
+	private List<User> users = new ArrayList<User>();
 	
+	@ManyToOne
+	@JoinColumn(name = "id_statuses", referencedColumnName = "id")
 	private Status status;
 	
 	public Notiffication() {

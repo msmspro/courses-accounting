@@ -1,9 +1,11 @@
 package com.intelisoft.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.intelisoft.model.enums.NotifficationStatus;
@@ -17,7 +19,8 @@ public class Status extends Model{
 	@Column(name = "status", nullable = false)
 	private NotifficationStatus status;
 	
-	private List<Notiffication> notiffications;
+	@OneToMany(mappedBy = "status")
+	private List<Notiffication> notiffications = new ArrayList<Notiffication>();
 
 	public Status() {
 	}

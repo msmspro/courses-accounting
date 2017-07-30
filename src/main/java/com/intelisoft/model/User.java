@@ -1,10 +1,16 @@
 package com.intelisoft.model;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.intelisoft.model.enums.UserRole;
@@ -36,12 +42,23 @@ public class User extends Model{
 	@Column(name = "user_role", nullable = false)
 	private UserRole userRole;
 	
-	private List<CurrentCourse> currentCourses;
+	@ManyToMany
+	@JoinTable(name = "users_current_courses",
+	joinColumns = {@JoinColumn(name = "id_users")},
+	inverseJoinColumns = {@JoinColumn(name = "id_current_courses")})
+	private List<CurrentCourse> currentCourses = new ArrayList<CurrentCourse>();
 	
-	private List<CostCoefficient> costCoefficients;
+	@OneToMany(mappedBy = "user")
+	private List<CostCoefficient> costCoefficients = new ArrayList<CostCoefficient>();
 	
-	private List<CompleteLesson> completeLessons;
+	@ManyToMany
+	@JoinTable(name = "users_complete_lessons",
+	joinColumns = {@JoinColumn(name = "id_users")},
+	inverseJoinColumns = {@JoinColumn(name = "id_complete_lessons")})
+	private List<CompleteLesson> completeLessons = new ArrayList<CompleteLesson>();
 	
+	@ManyToOne
+	@JoinColumn(name = "id_notiffications", referencedColumnName = "id")
 	private Notiffication notiffication;
 
 	public User() {

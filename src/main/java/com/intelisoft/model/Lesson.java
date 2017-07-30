@@ -1,9 +1,13 @@
 package com.intelisoft.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,11 +22,15 @@ public class Lesson extends Model{
 	@Column(name = "name", nullable = false)
 	private String name;
 	
-	private List<Topic> topics;
+	@OneToMany(mappedBy = "lesson")
+	private List<Topic> topics = new ArrayList<Topic>();
 	
+	@ManyToOne
+	@JoinColumn(name = "id_courses", referencedColumnName = "id")
 	private Course course;
 	
-	private List<CompleteLesson> completeLessons;
+	@OneToMany(mappedBy = "lesson")
+	private List<CompleteLesson> completeLessons = new ArrayList<CompleteLesson>();
 	
 	public Lesson() {
 	}

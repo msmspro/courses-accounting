@@ -1,9 +1,13 @@
 package com.intelisoft.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,9 +19,12 @@ public class CostCoefficient extends Model{
 	@Column(name = "coefficient", nullable = false)
 	private Float coefficient;
 	
+	@ManyToOne
+	@JoinColumn(name = "id_users", referencedColumnName = "id")
 	private User user;
 	
-	private List<CurrentCourse> currentCourses;
+	@OneToMany(mappedBy = "costCoefficient")
+	private List<CurrentCourse> currentCourses = new ArrayList<CurrentCourse>();
 
 	public CostCoefficient() {
 	}

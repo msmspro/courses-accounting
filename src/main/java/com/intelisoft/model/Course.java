@@ -1,9 +1,11 @@
 package com.intelisoft.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,9 +23,11 @@ public class Course extends Model{
 	@Column(name = "duration_hours", nullable = false)
 	private Float durationHours;
 	
-	private List<Lesson> lessons;
+	@OneToMany(mappedBy = "course")
+	private List<Lesson> lessons = new ArrayList<Lesson>();
 	
-	private List<CurrentCourse> currentCourses;
+	@OneToMany(mappedBy = "course")
+	private List<CurrentCourse> currentCourses = new ArrayList<CurrentCourse>();
 
 	public Course() {
 	}

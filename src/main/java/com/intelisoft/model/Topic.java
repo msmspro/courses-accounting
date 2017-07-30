@@ -2,6 +2,8 @@ package com.intelisoft.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +15,8 @@ public class Topic extends Model{
 	@Column(name = "name", nullable = false)
 	private String name;
 	
+	@ManyToOne
+	@JoinColumn(name = "id_lessons", referencedColumnName = "id")
 	private Lesson lesson;
 	
 	public Topic() {

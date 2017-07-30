@@ -1,10 +1,14 @@
 package com.intelisoft.model;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,11 +20,16 @@ public class CompleteLesson extends Model{
 	@Column(name = "date", nullable = false)
 	private Date date;
 	
+	@ManyToOne
+	@JoinColumn(name = "id_current_courses", referencedColumnName = "id")
 	private CurrentCourse currentCours;
 	
+	@ManyToOne
+	@JoinColumn(name = "id_lessons", referencedColumnName = "id")
 	private Lesson lesson;
 	
-	private List<User> users;
+	@ManyToMany(mappedBy = "completeLessons")
+	private List<User> users = new ArrayList<User>();
 
 	public CompleteLesson() {
 	}
