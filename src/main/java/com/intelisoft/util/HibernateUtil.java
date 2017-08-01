@@ -12,6 +12,9 @@ public class HibernateUtil {
 
 	private static SessionFactory sessionFactory;
     
+	private HibernateUtil() {
+	}
+	
     private static SessionFactory buildSessionFactory() {
         try {
 
@@ -32,7 +35,7 @@ public class HibernateUtil {
             throw new ExceptionInInitializerError(ex);
         }
     }
-     
+
     public static SessionFactory getSessionFactory() {
         if(sessionFactory == null) sessionFactory = buildSessionFactory();
         return sessionFactory;
