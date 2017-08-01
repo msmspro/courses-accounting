@@ -10,6 +10,7 @@ public class Application {
 
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
+		sessionFactory.close();
 	}
 
 }
