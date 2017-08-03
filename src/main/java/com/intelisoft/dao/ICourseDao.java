@@ -1,6 +1,6 @@
 package com.intelisoft.dao;
 
-import com.intelisoft.model.Course;
+import com.intelisoft.models.Course;
 
 public interface ICourseDao extends IGenericDao<Course> {
 

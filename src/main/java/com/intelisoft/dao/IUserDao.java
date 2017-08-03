@@ -1,6 +1,6 @@
 package com.intelisoft.dao;
 
-import com.intelisoft.model.User;
+import com.intelisoft.models.User;
 
 public interface IUserDao extends IGenericDao<User> {
 

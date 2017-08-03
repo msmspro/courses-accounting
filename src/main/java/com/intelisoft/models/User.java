@@ -1,11 +1,13 @@
-package com.intelisoft.model;
+package com.intelisoft.models;
 
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -13,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.intelisoft.model.enums.UserRole;
+import com.intelisoft.models.enums.UserRole;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,47 +25,45 @@ import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "users")
-public class User extends Model{
+public class User extends Model {
 
 	private static final long serialVersionUID = -6455789831431114570L;
 
 	@Column(name = "first_name", nullable = false)
 	private String firstName;
-	
+
 	@Column(name = "last_name", nullable = false)
 	private String lastName;
-	
+
 	@Column(name = "birth_date", nullable = true)
 	private Date birthDate;
-	
+
 	@Column(name = "phone_number", nullable = false)
 	private Integer phoneNumber;
-	
+
 	@Column(name = "address", nullable = true)
 	private String address;
-	
+
 	@Column(name = "e-mail", nullable = false)
 	private String eMail;
-	
+
 	@Column(name = "user_role", nullable = false)
 	private UserRole userRole;
-	
-	@ManyToMany
-	@JoinTable(name = "users_current_courses",
-	joinColumns = {@JoinColumn(name = "id_users")},
-	inverseJoinColumns = {@JoinColumn(name = "id_current_courses")})
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "users_current_courses", joinColumns = { @JoinColumn(name = "id_users") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_current_courses") })
 	private List<CurrentCourse> currentCourses = new ArrayList<CurrentCourse>();
-	
-	@OneToMany(mappedBy = "user")
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<CostCoefficient> costCoefficients = new ArrayList<CostCoefficient>();
-	
-	@ManyToMany
-	@JoinTable(name = "users_complete_lessons",
-	joinColumns = {@JoinColumn(name = "id_users")},
-	inverseJoinColumns = {@JoinColumn(name = "id_complete_lessons")})
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "users_complete_lessons", joinColumns = { @JoinColumn(name = "id_users") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_complete_lessons") })
 	private List<CompleteLesson> completeLessons = new ArrayList<CompleteLesson>();
-	
-	@ManyToOne
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_notiffications", referencedColumnName = "id")
 	private Notiffication notiffication;
 

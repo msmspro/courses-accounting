@@ -1,10 +1,12 @@
-package com.intelisoft.model;
+package com.intelisoft.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -25,11 +27,12 @@ public class CostCoefficient extends Model {
 	@Column(name = "coefficient", nullable = false)
 	private Float coefficient;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_users", referencedColumnName = "id")
 	private User user;
 
-	@OneToMany(mappedBy = "costCoefficient")
+	@OneToMany(mappedBy = "costCoefficient", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,
+			CascadeType.REFRESH })
 	private List<CurrentCourse> currentCourses = new ArrayList<CurrentCourse>();
 
 }

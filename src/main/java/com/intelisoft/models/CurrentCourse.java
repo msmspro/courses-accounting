@@ -1,11 +1,13 @@
-package com.intelisoft.model;
+package com.intelisoft.models;
 
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -30,18 +32,19 @@ public class CurrentCourse extends Model {
 	@Column(name = "end_date", nullable = true)
 	private Date endDate;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_courses", referencedColumnName = "id")
 	private Course course;
 
-	@ManyToMany(mappedBy = "currentCourses")
+	@ManyToMany(mappedBy = "currentCourses", fetch = FetchType.EAGER)
 	private List<User> users = new ArrayList<User>();
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_cost_coefficients", referencedColumnName = "id")
 	private CostCoefficient costCoefficient;
 
-	@OneToMany(mappedBy = "currentCours")
+	@OneToMany(mappedBy = "currentCours", fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST,
+			CascadeType.REFRESH }, orphanRemoval = true)
 	private List<CompleteLesson> completeLessons = new ArrayList<CompleteLesson>();
 
 }

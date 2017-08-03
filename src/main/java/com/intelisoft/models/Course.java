@@ -1,10 +1,12 @@
-package com.intelisoft.model;
+package com.intelisoft.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,10 +31,11 @@ public class Course extends Model {
 	@Column(name = "duration_hours", nullable = false)
 	private Float durationHours;
 
-	@OneToMany(mappedBy = "course")
+	@OneToMany(mappedBy = "course", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Lesson> lessons = new ArrayList<Lesson>();
 
-	@OneToMany(mappedBy = "course")
+	@OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,
+			CascadeType.REFRESH }, orphanRemoval = true)
 	private List<CurrentCourse> currentCourses = new ArrayList<CurrentCourse>();
 
 }

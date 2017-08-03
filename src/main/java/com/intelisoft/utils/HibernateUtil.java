@@ -1,4 +1,4 @@
-package com.intelisoft.util;
+package com.intelisoft.utils;
 
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;

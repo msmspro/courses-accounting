@@ -1,6 +1,6 @@
 package com.intelisoft.dao;
 
-import com.intelisoft.model.CurrentCourse;
+import com.intelisoft.models.CurrentCourse;
 
 public interface ICurrentCourseDao extends IGenericDao<CurrentCourse> {
 

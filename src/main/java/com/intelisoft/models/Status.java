@@ -1,14 +1,16 @@
-package com.intelisoft.model;
+package com.intelisoft.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.intelisoft.model.enums.NotifficationStatus;
+import com.intelisoft.models.enums.NotifficationStatus;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -25,7 +27,7 @@ public class Status extends Model {
 	@Column(name = "status", nullable = false)
 	private NotifficationStatus status;
 
-	@OneToMany(mappedBy = "status")
+	@OneToMany(mappedBy = "status", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.REFRESH })
 	private List<Notiffication> notiffications = new ArrayList<Notiffication>();
 
 }

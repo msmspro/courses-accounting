@@ -1,17 +1,19 @@
-package com.intelisoft.model;
+package com.intelisoft.models;
 
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.intelisoft.model.enums.NotifficationType;
+import com.intelisoft.models.enums.NotifficationType;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -34,10 +36,11 @@ public class Notiffication extends Model {
 	@Column(name = "type", nullable = false)
 	private NotifficationType type;
 
-	@OneToMany(mappedBy = "notiffication")
+	@OneToMany(mappedBy = "notiffication", cascade = { CascadeType.PERSIST,
+			CascadeType.REFRESH }, fetch = FetchType.EAGER)
 	private List<User> users = new ArrayList<User>();
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_statuses", referencedColumnName = "id")
 	private Status status;
 

@@ -5,7 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import com.intelisoft.dao.IGenericDao;
-import com.intelisoft.model.Model;
+import com.intelisoft.models.Model;
 
 @SuppressWarnings("unchecked")
 abstract class GenericDaoImpl<T extends Model> implements IGenericDao<T> {
@@ -18,7 +18,7 @@ abstract class GenericDaoImpl<T extends Model> implements IGenericDao<T> {
 
 	@Override
 	public void create(T model, Session session) {
-		session.save(model);
+		session.persist(model);
 	}
 
 	@Override
@@ -28,19 +28,17 @@ abstract class GenericDaoImpl<T extends Model> implements IGenericDao<T> {
 
 	@Override
 	public List<T> getAll(Session session) {
-		return null;// (List<T>) session
+		return session.createCriteria(ModelClazz).list();
 	}
 
 	@Override
 	public void update(T model, Session session) {
-		session.update(model);
-
+		session.refresh(model);
 	}
 
 	@Override
 	public void delete(T model, Session session) {
 		session.delete(model);
-
 	}
 
 }

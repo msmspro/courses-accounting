@@ -2,7 +2,7 @@ package com.intelisoft.app;
 
 import org.hibernate.SessionFactory;
 
-import com.intelisoft.util.HibernateUtil;
+import com.intelisoft.utils.HibernateUtil;
 
 public class Application {
 

@@ -6,25 +6,26 @@
 <hibernate-configuration>
 	<session-factory>
 	
-		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
 		<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/intelisoft_accounting?useSSL=false</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<property name="hibernate.c3p0.min_size">5</property>
 
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		
-		<mapping class="com.intelisoft.model.Model"/>
-		<mapping class="com.intelisoft.model.CompleteLesson"/>
-		<mapping class="com.intelisoft.model.CostCoefficient"/>
-		<mapping class="com.intelisoft.model.Course"/>
-		<mapping class="com.intelisoft.model.CurrentCourse"/>
-		<mapping class="com.intelisoft.model.Lesson"/>
-		<mapping class="com.intelisoft.model.Notiffication"/>
-		<mapping class="com.intelisoft.model.Status"/>
-		<mapping class="com.intelisoft.model.Topic"/>
-		<mapping class="com.intelisoft.model.User"/>
+		<mapping class="com.intelisoft.models.Model"/>
+		<mapping class="com.intelisoft.models.CompleteLesson"/>
+		<mapping class="com.intelisoft.models.CostCoefficient"/>
+		<mapping class="com.intelisoft.models.Course"/>
+		<mapping class="com.intelisoft.models.CurrentCourse"/>
+		<mapping class="com.intelisoft.models.Lesson"/>
+		<mapping class="com.intelisoft.models.Notiffication"/>
+		<mapping class="com.intelisoft.models.Status"/>
+		<mapping class="com.intelisoft.models.Topic"/>
+		<mapping class="com.intelisoft.models.User"/>
 		
 	</session-factory>
 </hibernate-configuration>

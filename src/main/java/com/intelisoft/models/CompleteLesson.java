@@ -1,4 +1,4 @@
-package com.intelisoft.model;
+package com.intelisoft.models;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -26,15 +27,15 @@ public class CompleteLesson extends Model {
 	@Column(name = "date", nullable = false)
 	private Date date;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_current_courses", referencedColumnName = "id")
 	private CurrentCourse currentCours;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_lessons", referencedColumnName = "id")
 	private Lesson lesson;
 
-	@ManyToMany(mappedBy = "completeLessons")
+	@ManyToMany(mappedBy = "completeLessons", fetch = FetchType.EAGER)
 	private List<User> users = new ArrayList<User>();
 
 }

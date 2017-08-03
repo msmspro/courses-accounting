@@ -1,7 +1,8 @@
-package com.intelisoft.model;
+package com.intelisoft.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -21,7 +22,7 @@ public class Topic extends Model {
 	@Column(name = "name", nullable = false)
 	private String name;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_lessons", referencedColumnName = "id")
 	private Lesson lesson;
 

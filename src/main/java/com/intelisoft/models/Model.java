@@ -1,4 +1,4 @@
-package com.intelisoft.model;
+package com.intelisoft.models;
 
 import java.io.Serializable;
 
