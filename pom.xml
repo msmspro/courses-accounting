@@ -1,13 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.intelisoft</groupId>
-	<artifactId>intelisoft-accounting</artifactId>
-	<packaging>war</packaging>
-	<version>1.0</version>
-	<name>intelisoft-accounting</name>
-
-	<properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.intelisoft.courses-accounting</groupId>
+  <artifactId>courses-accounting</artifactId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>courses-accounting-api</module>
+  	<module>courses-accounting-dao</module>
+  	<module>courses-accounting-service</module>
+  	<module>courses-accounting-models</module>
+  </modules>
+  
+  <properties>
 		<java-version>1.8</java-version>
 		<mySQL-jdbc-version>6.0.6</mySQL-jdbc-version>
 		<log4j-version>1.2.17</log4j-version>
@@ -49,20 +53,6 @@
 			<version>${c3p0-version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>${javax.servlet-api-version}</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>${lombok-version}</version>
-			<scope>provided</scope>
-		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -85,5 +75,5 @@
 		<finalName>intelisoft-accounting</finalName>
 
 	</build>
-
+  
 </project>
