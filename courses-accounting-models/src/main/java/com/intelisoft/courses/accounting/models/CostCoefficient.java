@@ -1,4 +1,4 @@
-package com.inetlisoft.courses.accounting.models;
+package com.intelisoft.courses.accounting.models;
 
 import java.util.ArrayList;
 import java.util.List;

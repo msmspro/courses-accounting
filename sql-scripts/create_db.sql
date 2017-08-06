@@ -1,12 +1,10 @@
-SET global time_zone = `+02:00`;
+CREATE SCHEMA IF NOT EXISTS `courses_accounting` DEFAULT CHARACTER SET utf8;
 
-CREATE SCHEMA IF NOT EXISTS `intelisoft_accounting` DEFAULT CHARACTER SET utf8;
+use `courses_accounting`;
 
-use `intelisoft_accounting`;
-
-CREATE TABLE `statuses` (
-    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `status` ENUM('COMPLETE', 'WAITING', 'ERROR') NOT NULL
+CREATE TABLE `directions_of_courses` (
+	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `direction` VARCHAR(200) NOT NULL
 );
 
 CREATE TABLE `notiffications` (
@@ -14,11 +12,7 @@ CREATE TABLE `notiffications` (
     `notice_datetime` DATETIME NOT NULL,
     `message` TEXT NOT NULL,
     `type` ENUM('E_MAIL', 'OPERATOR') NOT NULL,
-    `id_statuses` INT UNSIGNED NOT NULL,
-    FOREIGN KEY (`id_statuses`)
-        REFERENCES `statuses` (`id`)
-        ON DELETE NO ACTION
-        ON UPDATE CASCADE
+    `status` ENUM('COMPLETE', 'WAITING', 'ERROR') NOT NULL
 );
 
 CREATE TABLE `users` (
@@ -51,7 +45,12 @@ CREATE TABLE `courses` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(100) NOT NULL,
     `cost` DOUBLE UNSIGNED NOT NULL,
-    `duration_hours` FLOAT UNSIGNED NOT NULL
+    `duration_hours` FLOAT UNSIGNED NOT NULL,
+    `id_directions_of_courses` INT UNSIGNED NOT NULL,
+    FOREIGN KEY (`id_directions_of_courses`)
+		REFERENCES `directions_of_courses` (`id`)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE `current_courses` (
@@ -91,16 +90,6 @@ CREATE TABLE `lessons` (
     `id_courses` INT UNSIGNED NOT NULL,
     FOREIGN KEY (`id_courses`)
         REFERENCES `courses` (`id`)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
-);
-
-CREATE TABLE `topics` (
-    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `name` VARCHAR(300) NOT NULL,
-    `id_lessons` INT UNSIGNED NOT NULL,
-    FOREIGN KEY (`id_lessons`)
-        REFERENCES `lessons` (`id`)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );

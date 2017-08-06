@@ -1,7 +1,11 @@
 package com.intelisoft.courses.accounting.api.services;
 
-import com.inetlisoft.courses.accounting.models.Course;
+import java.util.List;
 
-public interface ICourseService extends IGenericService<Course> {
+import com.intelisoft.courses.accounting.models.Course;
+
+public interface ICourseService {
+
+	List<Course> getCoursesWithLessonsAndTopics();
 
 }

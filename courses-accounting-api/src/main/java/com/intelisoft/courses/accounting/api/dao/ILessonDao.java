@@ -1,6 +1,6 @@
 package com.intelisoft.courses.accounting.api.dao;
 
-import com.inetlisoft.courses.accounting.models.Lesson;
+import com.intelisoft.courses.accounting.models.Lesson;
 
 public interface ILessonDao extends IGenericDao<Lesson> {
 

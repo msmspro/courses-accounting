@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import com.inetlisoft.courses.accounting.models.Model;
 import com.intelisoft.courses.accounting.api.dao.IGenericDao;
+import com.intelisoft.courses.accounting.models.Model;
 
 @SuppressWarnings("unchecked")
 abstract class GenericDaoImpl<T extends Model> implements IGenericDao<T> {

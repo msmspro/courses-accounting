@@ -1,4 +1,4 @@
-package com.inetlisoft.courses.accounting.models;
+package com.intelisoft.courses.accounting.models;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.inetlisoft.courses.accounting.models.enums.UserRole;
+import com.intelisoft.courses.accounting.models.enums.UserRole;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -35,13 +35,13 @@ public class User extends Model {
 	@Column(name = "last_name", nullable = false)
 	private String lastName;
 
-	@Column(name = "birth_date", nullable = true)
+	@Column(name = "birth_date")
 	private Date birthDate;
 
 	@Column(name = "phone_number", nullable = false)
 	private Integer phoneNumber;
 
-	@Column(name = "address", nullable = true)
+	@Column(name = "address")
 	private String address;
 
 	@Column(name = "e-mail", nullable = false)
@@ -55,7 +55,7 @@ public class User extends Model {
 			@JoinColumn(name = "id_current_courses") })
 	private List<CurrentCourse> currentCourses = new ArrayList<CurrentCourse>();
 
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<CostCoefficient> costCoefficients = new ArrayList<CostCoefficient>();
 
 	@ManyToMany(fetch = FetchType.LAZY)

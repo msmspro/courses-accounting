@@ -1,11 +1,11 @@
 package com.intelisoft.courses.accounting.dao;
 
-import com.inetlisoft.courses.accounting.models.CostCoefficient;
 import com.intelisoft.courses.accounting.api.dao.ICostCoefficientDao;
+import com.intelisoft.courses.accounting.models.CostCoefficient;
 
 public class CostCoefficientDaoImpl extends GenericDaoImpl<CostCoefficient> implements ICostCoefficientDao {
 
-	public CostCoefficientDaoImpl(Class<CostCoefficient> clazz) {
+	public CostCoefficientDaoImpl() {
 		super(CostCoefficient.class);
 	}
 

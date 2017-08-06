@@ -9,6 +9,7 @@
   	<module>courses-accounting-dao</module>
   	<module>courses-accounting-service</module>
   	<module>courses-accounting-models</module>
+  	<module>courses-accounting-app</module>
   </modules>
   
   <properties>

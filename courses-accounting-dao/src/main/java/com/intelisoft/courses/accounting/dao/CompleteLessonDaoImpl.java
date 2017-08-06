@@ -1,11 +1,11 @@
 package com.intelisoft.courses.accounting.dao;
 
-import com.inetlisoft.courses.accounting.models.CompleteLesson;
 import com.intelisoft.courses.accounting.api.dao.ICompleteLessonDao;
+import com.intelisoft.courses.accounting.models.CompleteLesson;
 
 public class CompleteLessonDaoImpl extends GenericDaoImpl<CompleteLesson> implements ICompleteLessonDao {
 
-	public CompleteLessonDaoImpl(Class<CompleteLesson> clazz) {
+	public CompleteLessonDaoImpl() {
 		super(CompleteLesson.class);
 	}
 

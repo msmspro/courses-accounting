@@ -1,4 +1,4 @@
-package com.inetlisoft.courses.accounting.models;
+package com.intelisoft.courses.accounting.models;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -27,15 +27,15 @@ public class CompleteLesson extends Model {
 	@Column(name = "date", nullable = false)
 	private Date date;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_current_courses", referencedColumnName = "id")
 	private CurrentCourse currentCours;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_lessons", referencedColumnName = "id")
 	private Lesson lesson;
 
-	@ManyToMany(mappedBy = "completeLessons", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "completeLessons", fetch = FetchType.LAZY)
 	private List<User> users = new ArrayList<User>();
 
 }

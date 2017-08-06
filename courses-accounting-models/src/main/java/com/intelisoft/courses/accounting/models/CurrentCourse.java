@@ -1,4 +1,4 @@
-package com.inetlisoft.courses.accounting.models;
+package com.intelisoft.courses.accounting.models;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -26,24 +26,24 @@ public class CurrentCourse extends Model {
 
 	private static final long serialVersionUID = -8179107624184931157L;
 
-	@Column(name = "start_date", nullable = true)
+	@Column(name = "start_date")
 	private Date startDate;
 
-	@Column(name = "end_date", nullable = true)
+	@Column(name = "end_date")
 	private Date endDate;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_courses", referencedColumnName = "id")
 	private Course course;
 
-	@ManyToMany(mappedBy = "currentCourses", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "currentCourses", fetch = FetchType.LAZY)
 	private List<User> users = new ArrayList<User>();
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_cost_coefficients", referencedColumnName = "id")
 	private CostCoefficient costCoefficient;
 
-	@OneToMany(mappedBy = "currentCours", fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST,
+	@OneToMany(mappedBy = "currentCours", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,
 			CascadeType.REFRESH }, orphanRemoval = true)
 	private List<CompleteLesson> completeLessons = new ArrayList<CompleteLesson>();
 

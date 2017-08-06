@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import com.inetlisoft.courses.accounting.models.Model;
+import com.intelisoft.courses.accounting.models.Model;
 
 public interface IGenericDao<T extends Model> {
 

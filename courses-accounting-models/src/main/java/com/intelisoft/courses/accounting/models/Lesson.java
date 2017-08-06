@@ -1,4 +1,4 @@
-package com.inetlisoft.courses.accounting.models;
+package com.intelisoft.courses.accounting.models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +29,6 @@ public class Lesson extends Model {
 
 	@Column(name = "name", nullable = false)
 	private String name;
-
-	@OneToMany(mappedBy = "lesson", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<Topic> topics = new ArrayList<Topic>();
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_courses", referencedColumnName = "id")
