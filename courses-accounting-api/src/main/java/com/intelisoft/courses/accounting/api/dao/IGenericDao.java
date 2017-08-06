@@ -8,14 +8,14 @@ import com.intelisoft.courses.accounting.models.Model;
 
 public interface IGenericDao<T extends Model> {
 
-	void create(T model, Session session);
+	void create(T model, Session session) throws Exception;
 
-	T getById(long id, Session session);
+	T getById(long id, Session session) throws Exception;
 
-	List<T> getAll(Session session);
+	List<T> getAll(Session session) throws Exception;
 
-	void update(T model, Session session);
+	void update(T model, Session session) throws Exception;
 
-	void delete(T model, Session session);
+	void delete(T model, Session session) throws Exception;
 
 }
