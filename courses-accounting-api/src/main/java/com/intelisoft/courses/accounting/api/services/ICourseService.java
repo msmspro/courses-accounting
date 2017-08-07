@@ -6,6 +6,6 @@ import com.intelisoft.courses.accounting.models.Course;
 
 public interface ICourseService {
 
-	List<Course> getCoursesWithLessonsAndTopics();
+	List<Course> getCoursesWithLessons();
 
 }

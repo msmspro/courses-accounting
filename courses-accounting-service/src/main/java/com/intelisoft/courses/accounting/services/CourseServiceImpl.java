@@ -15,23 +15,28 @@ public class CourseServiceImpl implements ICourseService {
 
 	private static final Logger log = Logger.getLogger(CourseServiceImpl.class);
 
-	public List<Course> getCoursesWithLessonsAndTopics() {
+	ICourseDao dao = new CourseDaoImpl();
+
+	public List<Course> getCoursesWithLessons() {
 
 		Session session = HibernateUtil.getSession();
 
 		session.beginTransaction();
-		try {
-			ICourseDao dao = new CourseDaoImpl();
 
-			List<Course> courses = dao.getAll(session);
+		List<Course> courses = null;
+
+		try {
+
+			courses = dao.getAll(session);
 
 			session.getTransaction().commit();
+
 		} catch (Exception e) {
 			session.getTransaction().rollback();
-			log.error("Error in method getCoursesWithLessonsAndTopics()", e);
+			log.error("Error in service, getCoursesWithLessons method", e);
 		}
 
-		return null;
+		return (List<Course>) courses;
 
 	}
 

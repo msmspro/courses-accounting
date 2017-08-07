@@ -1,3 +1,5 @@
+DROP SCHEMA IF EXISTS `courses_accounting`;
+
 CREATE SCHEMA IF NOT EXISTS `courses_accounting` DEFAULT CHARACTER SET utf8;
 
 use `courses_accounting`;

@@ -1,3 +1,5 @@
+use `courses_accounting`;
+
 INSERT INTO `courses_accounting`.`directions_of_courses` (`id`, `direction`) VALUES ('1', 'Программирование и тестирование');
 INSERT INTO `courses_accounting`.`directions_of_courses` (`id`, `direction`) VALUES ('2', 'Администрирование сетей');
 INSERT INTO `courses_accounting`.`directions_of_courses` (`id`, `direction`) VALUES ('3', 'Разработка веб сайтов и веб приложений');
