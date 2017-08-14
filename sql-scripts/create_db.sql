@@ -13,19 +13,19 @@ CREATE TABLE `notiffications` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `notice_datetime` DATETIME NOT NULL,
     `message` TEXT NOT NULL,
-    `type` ENUM('E_MAIL', 'OPERATOR') NOT NULL,
-    `status` ENUM('COMPLETE', 'WAITING', 'ERROR') NOT NULL
+    `type` VARCHAR(20) NOT NULL,
+    `status` VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE `users` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `first_name` VARCHAR(40) NOT NULL,
     `last_name` VARCHAR(40) NOT NULL,
-    `birth_date` DATETIME NULL,
+    `birth_date` DATE NULL,
     `phone_number` INT(20) NOT NULL,
     `address` VARCHAR(40) NULL,
-    `e-mail` VARCHAR(50) NOT NULL,
-    `user_role` ENUM('STUDENT', 'TEACHER') NOT NULL,
+    `email` VARCHAR(50) NOT NULL,
+    `user_role` VARCHAR(20) NOT NULL,
     `id_notiffications` INT UNSIGNED NULL,
     FOREIGN KEY (`id_notiffications`)
         REFERENCES `notiffications` (`id`)

@@ -1,5 +1,7 @@
 package com.intelisoft.courses.accounting.api.services;
 
-public interface ILessonService {
+import com.intelisoft.courses.accounting.models.Lesson;
+
+public interface ILessonService extends IGenericService<Lesson> {
 
 }

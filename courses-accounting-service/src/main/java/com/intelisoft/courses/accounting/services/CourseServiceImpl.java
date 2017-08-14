@@ -11,33 +11,38 @@ import com.intelisoft.courses.accounting.dao.CourseDaoImpl;
 import com.intelisoft.courses.accounting.models.Course;
 import com.intelisoft.courses.accounting.utils.HibernateUtil;
 
-public class CourseServiceImpl implements ICourseService {
+public class CourseServiceImpl extends GenericServiceImpl<Course> implements ICourseService {
 
 	private static final Logger log = Logger.getLogger(CourseServiceImpl.class);
 
-	ICourseDao dao = new CourseDaoImpl();
+	private static ICourseDao dao = new CourseDaoImpl();
 
-	public List<Course> getCoursesWithLessons() {
+	public CourseServiceImpl() {
+		super(dao);
+	}
+
+	public List<Course> getAllCoursesWithLessons() {
 
 		Session session = HibernateUtil.getSession();
-
-		session.beginTransaction();
 
 		List<Course> courses = null;
 
 		try {
 
-			courses = dao.getAll(session);
+			session.beginTransaction();
+
+			courses = dao.getAllCoursesWithLessons(session);
 
 			session.getTransaction().commit();
 
 		} catch (Exception e) {
 			session.getTransaction().rollback();
-			log.error("Error in service, getCoursesWithLessons method", e);
+			log.error("Error in service, test method", e);
+		} finally {
+			session.close();
 		}
 
-		return (List<Course>) courses;
-
+		return courses;
 	}
 
 }

@@ -10,11 +10,17 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(exclude = "courses")
+@EqualsAndHashCode(callSuper = true, exclude = "courses")
 
 @Entity
 @Table(name = "directions_of_courses")

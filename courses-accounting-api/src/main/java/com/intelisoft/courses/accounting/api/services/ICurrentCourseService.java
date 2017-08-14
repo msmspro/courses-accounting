@@ -1,5 +1,7 @@
 package com.intelisoft.courses.accounting.api.services;
 
-public interface ICurrentCourseService {
+import com.intelisoft.courses.accounting.models.CurrentCourse;
+
+public interface ICurrentCourseService extends IGenericService<CurrentCourse> {
 
 }

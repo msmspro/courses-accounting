@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.intelisoft.courses.accounting.models.Course;
 
-public interface ICourseService {
+public interface ICourseService extends IGenericService<Course> {
 
-	List<Course> getCoursesWithLessons();
+	List<Course> getAllCoursesWithLessons();
 
 }

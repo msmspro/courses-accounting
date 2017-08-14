@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -14,11 +16,17 @@ import javax.persistence.Table;
 import com.intelisoft.courses.accounting.models.enums.NotifficationStatus;
 import com.intelisoft.courses.accounting.models.enums.NotifficationType;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(exclude = "users")
+@EqualsAndHashCode(callSuper = true, exclude = "users")
 
 @Entity
 @Table(name = "notiffications")
@@ -32,10 +40,12 @@ public class Notiffication extends Model {
 	@Column(name = "message", nullable = false)
 	private String message;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "type", nullable = false)
 	private NotifficationType type;
 
-	@Column(name = "status")
+	@Enumerated(EnumType.STRING)
+	@Column(name = "status", nullable = false)
 	private NotifficationStatus status;
 
 	@OneToMany(mappedBy = "notiffication", cascade = { CascadeType.PERSIST,

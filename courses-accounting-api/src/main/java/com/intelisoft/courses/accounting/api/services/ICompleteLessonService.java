@@ -1,5 +1,7 @@
 package com.intelisoft.courses.accounting.api.services;
 
-public interface ICompleteLessonService {
+import com.intelisoft.courses.accounting.models.CompleteLesson;
+
+public interface ICompleteLessonService extends IGenericService<CompleteLesson> {
 
 }

@@ -1,6 +1,7 @@
 package com.intelisoft.courses.accounting.utils;
 
 import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -37,9 +38,19 @@ public class HibernateUtil {
 	}
 
 	public static Session getSession() {
+
 		if (sessionFactory == null)
 			sessionFactory = buildSessionFactory();
-		return sessionFactory.openSession();
+
+		Session session = null;
+
+		try {
+			session = sessionFactory.openSession();
+		} catch (HibernateException e) {
+			log.error("SessionFactory.openSession failed." + e);
+		}
+
+		return session;
 	}
 
 }

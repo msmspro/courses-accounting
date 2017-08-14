@@ -12,11 +12,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(exclude = { "course", "completeLessons" })
+@EqualsAndHashCode(callSuper = true, exclude = { "course", "completeLessons" })
 
 @Entity
 @Table(name = "lessons")
@@ -37,5 +43,4 @@ public class Lesson extends Model {
 	@OneToMany(mappedBy = "lesson", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,
 			CascadeType.REFRESH }, orphanRemoval = true)
 	private List<CompleteLesson> completeLessons = new ArrayList<CompleteLesson>();
-
 }

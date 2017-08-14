@@ -1,5 +1,7 @@
 package com.intelisoft.courses.accounting.api.services;
 
-public interface IDirectionOfCoursesService {
+import com.intelisoft.courses.accounting.models.DirectionOfCourses;
+
+public interface IDirectionOfCoursesService extends IGenericService<DirectionOfCourses> {
 
 }
