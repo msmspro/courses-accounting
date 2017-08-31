@@ -36,11 +36,11 @@ public class CourseServlet extends HttpServlet {
 		// pw.append(course.toString()).append(course.getLessons().toString()).append("<br>");
 		// }
 
-		pw.append("<a href=\"./\">назад</a>");
+		pw.append("<a href=\"./\">РЅР°Р·Р°Рґ</a>");
 
-		pw.append("<div alight = center><table border=1>");
+		pw.append("<div alight = center><table border-color=gray>");
 
-		pw.append("<tr><td>название курса</td><td>количество часов</td><td>стоимость</td></tr>");
+		pw.append("<tr><td>РЅР°Р·РІР°РЅРёРµ РєСѓСЂСЃР°</td><td>РєРѕР»Р»РёС‡РµСЃС‚РІРѕ С‡Р°СЃРѕРІ</td><td>СЃС‚РѕРёРјРѕСЃС‚СЊ</td></tr>");
 
 		for (Course course : courses) {
 
